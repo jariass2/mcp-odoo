@@ -1,16 +1,9 @@
-FROM python:3.11-slim
+FROM python:3.10-slim
 
 WORKDIR /app
 
-# Instalar dependencias
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir mcp-server-odoo
 
-# Copiar el código del servidor
-COPY . .
-
-# Exponer puerto (opcional para modo HTTP)
 EXPOSE 3000
 
-# Comando por defecto (modo stdio)
-CMD ["python", "-m", "odoo_mcp"]
+CMD ["mcp-server-odoo"]
